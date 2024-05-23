@@ -43,7 +43,8 @@
                     return;
                 }
 
-                if (((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTFeatureClass)
+                if (((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTFeatureClass 
+                    && ((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTTable)
                 {
                     return;
                 }
@@ -157,7 +158,8 @@
 
             IGxObject pGxObject = this.pGxApp.SelectedObject;
 
-            this.Enabled = ((pGxObject as IGxDataset) != null) && ((pGxObject as IGxDataset).Type == esriDatasetType.esriDTFeatureClass);
+            this.Enabled = ((pGxObject as IGxDataset) != null) 
+                && ((pGxObject as IGxDataset).Type == esriDatasetType.esriDTFeatureClass || (pGxObject as IGxDataset).Type == esriDatasetType.esriDTTable);
 
         }
 
