@@ -15,8 +15,8 @@
 
         public RemoveClassExtension()
         {
-            this.pGxApp  = ArcCatalog.Application as IGxApplication;
-           
+            this.pGxApp = ArcCatalog.Application as IGxApplication;
+
         }
 
         protected override void OnClick()
@@ -43,7 +43,7 @@
                     return;
                 }
 
-                if (((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTFeatureClass 
+                if (((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTFeatureClass
                     && ((pGxObject as IGxDataset).Type) != esriDatasetType.esriDTTable)
                 {
                     return;
@@ -75,7 +75,7 @@
 
                                 MessageBox.Show("Class extension removed: success! Restart ArcCatalog!", "Remove Class Extension", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 MessageBox.Show("Error " + ex.Message);
                                 return;
@@ -150,7 +150,8 @@
 
         protected override void OnUpdate()
         {
-            if (this.pGxApp.Selection.Count != 1)
+
+            if (this.pGxApp.SelectedObject == null)
             {
                 this.Enabled = false;
                 return;
@@ -158,7 +159,7 @@
 
             IGxObject pGxObject = this.pGxApp.SelectedObject;
 
-            this.Enabled = ((pGxObject as IGxDataset) != null) 
+            this.Enabled = ((pGxObject as IGxDataset) != null)
                 && ((pGxObject as IGxDataset).Type == esriDatasetType.esriDTFeatureClass || (pGxObject as IGxDataset).Type == esriDatasetType.esriDTTable);
 
         }
@@ -213,5 +214,5 @@
         }
     }
 
-    
+
 }

@@ -191,7 +191,7 @@
 
         protected override void OnUpdate()
         {
-            if (this.pGxApp.Selection.Count != 1)
+            if (this.pGxApp.SelectedObject == null)
             {
                 this.Enabled = false;
                 return;
